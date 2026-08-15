@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class CustomSinglyLinkedList<E> implements List<E> {
+public class CustomSinglyLinkedList<E extends Comparable<E>> implements List<E>, CustomLinkedListOperations<E> {
 
     private CustomNode<E> head;
 
@@ -75,6 +75,25 @@ public class CustomSinglyLinkedList<E> implements List<E> {
         }
 
         current.setNextNode(newNode);
+    }
+
+    @Override
+    public void addSorted(E element) {
+        if (head == null) {
+            addFirst(element);
+            return;
+        }
+
+        // TODO: fix add before head
+
+        // 3 -> 5 ->  null
+        CustomNode<E> newNode = new CustomNode<>(element);
+        CustomNode<E> currentNode = head;
+        while (currentNode.getNextNode() != null && newNode.getData().compareTo(currentNode.getNextNode().getData())> 0) {
+            currentNode = currentNode.getNextNode();
+        }
+        newNode.setNextNode(currentNode.getNextNode());
+        currentNode.setNextNode(newNode);
     }
 
     @Override

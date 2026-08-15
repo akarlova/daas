@@ -1,6 +1,6 @@
 package dataStructures;
 
-public class CustomNode<T> {
+public class CustomNode<T extends Comparable<T>>{
 
     private T data;
     private CustomNode<T> nextNode;
@@ -29,9 +29,10 @@ public class CustomNode<T> {
     @Override
     public String toString() {
         if (this.nextNode != null) {
-            return data + " -> " ;
+            return data + " -> ";
         } else {
             return data + " -> null";
         }
     }
+
 }

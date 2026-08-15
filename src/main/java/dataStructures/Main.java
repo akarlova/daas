@@ -8,7 +8,11 @@ public class Main {
 //        System.out.println("Is list empty? " + list.isEmpty());
 
         list.addLast(1);
-        list.addLast(2);
+        list.addLast(3);
+        list.addLast(5);
+
+        list.addSorted(4);
+        list.addSorted(0);
 
         System.out.println(list.toString());
 
