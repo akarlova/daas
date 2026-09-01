@@ -88,6 +88,11 @@ public class CustomSinglyLinkedList<E extends Comparable<E>> implements List<E>,
 
         // 3 -> 5 ->  null
         CustomNode<E> newNode = new CustomNode<>(element);
+        if(element.compareTo(head.getData()) < 0) {
+            newNode.setNextNode(head);
+            head = newNode;
+            return;
+        }
         CustomNode<E> currentNode = head;
         while (currentNode.getNextNode() != null && newNode.getData().compareTo(currentNode.getNextNode().getData())> 0) {
             currentNode = currentNode.getNextNode();
